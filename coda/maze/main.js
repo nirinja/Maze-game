@@ -1,19 +1,19 @@
 // Importing essential modules and components for the application.
-import { ResizeSystem } from 'engine/systems/ResizeSystem.js';
-import { UpdateSystem } from 'engine/systems/UpdateSystem.js';
+import {ResizeSystem} from 'engine/systems/ResizeSystem.js';
+import {UpdateSystem} from 'engine/systems/UpdateSystem.js';
 
-import { GLTFLoader } from 'engine/loaders/GLTFLoader.js';
-import { UnlitRenderer } from 'engine/renderers/UnlitRenderer.js';
-import { FirstPersonController } from 'engine/controllers/FirstPersonController.js';
+import {GLTFLoader} from 'engine/loaders/GLTFLoader.js';
+import {UnlitRenderer} from 'engine/renderers/UnlitRenderer.js';
+import {FirstPersonController} from 'engine/controllers/FirstPersonController.js';
 
-import { Camera, Model } from 'engine/core.js';
+import {Camera, Model} from 'engine/core.js';
 
 import {
     calculateAxisAlignedBoundingBox,
     mergeAxisAlignedBoundingBoxes,
 } from 'engine/core/MeshUtils.js';
 
-import { Physics } from './Physics.js';
+import {Physics} from './Physics.js';
 
 // Set up the rendering canvas and initialize the renderer.
 const canvas = document.querySelector('canvas');
@@ -94,6 +94,20 @@ loader.loadNode('Curve.056').isStatic = true;
 loader.loadNode('Curve.057').isStatic = true;
 loader.loadNode('Curve.058').isStatic = true;
 
+const coin1 = loader.loadNode('Cylinder.001');
+coin1.isStatic = true;
+coin1.name = 'Cylinder.001';
+//loader.loadNode('Cylinder.001').isStatic = true;
+loader.loadNode('Cylinder.002').isStatic = true;
+loader.loadNode('Cylinder.003').isStatic = true;
+loader.loadNode('Cylinder.004').isStatic = true;
+loader.loadNode('Cylinder.005').isStatic = true;
+loader.loadNode('Cylinder.006').isStatic = true;
+loader.loadNode('Cylinder.007').isStatic = true;
+loader.loadNode('Cylinder.008').isStatic = true;
+loader.loadNode('Cylinder.009').isStatic = true;
+loader.loadNode('Cylinder.010').isStatic = true;
+
 // Initialize the physics system for the scene.
 const physics = new Physics(scene);
 
@@ -112,7 +126,7 @@ scene.traverse(node => {
 function update(time, dt) {
     scene.traverse(node => {
         for (const component of node.components) {
-            component.update?.(time, dt); // Call the update method if it exists.
+            component.update?.(time, dt);
         }
     });
 
@@ -125,10 +139,10 @@ function render() {
 }
 
 // Handle resizing of the canvas and adjust the camera's aspect ratio.
-function resize({ displaySize: { width, height }}) {
+function resize({displaySize: {width, height}}) {
     camera.getComponentOfType(Camera).aspect = width / height;
 }
 
 // Start the systems for handling resize events and updates.
-new ResizeSystem({ canvas, resize }).start();
-new UpdateSystem({ update, render }).start();
+new ResizeSystem({canvas, resize}).start();
+new UpdateSystem({update, render}).start();

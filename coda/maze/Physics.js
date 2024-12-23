@@ -1,6 +1,6 @@
-import { vec3, mat4 } from 'glm';
-import { getGlobalModelMatrix } from 'engine/core/SceneUtils.js';
-import { Transform } from 'engine/core.js';
+import {vec3, mat4} from 'glm';
+import {getGlobalModelMatrix} from 'engine/core/SceneUtils.js';
+import {Transform} from 'engine/core.js';
 
 export class Physics {
 
@@ -33,7 +33,7 @@ export class Physics {
     getTransformedAABB(node) {
         // Transform all vertices of the AABB from local to global space.
         const matrix = getGlobalModelMatrix(node);
-        const { min, max } = node.aabb;
+        const {min, max} = node.aabb;
         const vertices = [
             [min[0], min[1], min[2]],
             [min[0], min[1], max[2]],
@@ -51,7 +51,7 @@ export class Physics {
         const zs = vertices.map(v => v[2]);
         const newmin = [Math.min(...xs), Math.min(...ys), Math.min(...zs)];
         const newmax = [Math.max(...xs), Math.max(...ys), Math.max(...zs)];
-        return { min: newmin, max: newmax };
+        return {min: newmin, max: newmax};
     }
 
     resolveCollision(a, b) {
