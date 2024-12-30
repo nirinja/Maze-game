@@ -1,11 +1,16 @@
 import {vec3, mat4} from 'glm';
 import {getGlobalModelMatrix} from 'engine/core/SceneUtils.js';
 import {Transform} from 'engine/core.js';
+import { UnlitRenderer } from 'engine/renderers/UnlitRenderer.js';
+import { Node } from '../engine/core.js';
+import { incrementCoinCount } from './main.js';
 
 export class Physics {
 
     constructor(scene) {
         this.scene = scene;
+        this.renderer = new UnlitRenderer()
+        console.log(this.renderer);
     }
 
     update(t, dt) {
@@ -55,53 +60,63 @@ export class Physics {
     }
 
     resolveCollision(a, b) {
-        // Get global space AABBs.
-        const aBox = this.getTransformedAABB(a);
-        const bBox = this.getTransformedAABB(b);
+        const dontRender = JSON.parse(sessionStorage.getItem('dontRender') || '[]');
 
-        // Check if there is collision.
-        const isColliding = this.aabbIntersection(aBox, bBox);
-        if (!isColliding) {
-            return;
-        }
+        if (!dontRender.includes(b.name)) {
+            const aBox = this.getTransformedAABB(a);
+            const bBox = this.getTransformedAABB(b);
 
-        // Move node A minimally to avoid collision.
-        const diffa = vec3.sub(vec3.create(), bBox.max, aBox.min);
-        const diffb = vec3.sub(vec3.create(), aBox.max, bBox.min);
+            const isColliding = this.aabbIntersection(aBox, bBox);
+            if (!isColliding) {
+                return;
+            }
 
-        let minDiff = Infinity;
-        let minDirection = [0, 0, 0];
-        if (diffa[0] >= 0 && diffa[0] < minDiff) {
-            minDiff = diffa[0];
-            minDirection = [minDiff, 0, 0];
-        }
-        if (diffa[1] >= 0 && diffa[1] < minDiff) {
-            minDiff = diffa[1];
-            minDirection = [0, minDiff, 0];
-        }
-        if (diffa[2] >= 0 && diffa[2] < minDiff) {
-            minDiff = diffa[2];
-            minDirection = [0, 0, minDiff];
-        }
-        if (diffb[0] >= 0 && diffb[0] < minDiff) {
-            minDiff = diffb[0];
-            minDirection = [-minDiff, 0, 0];
-        }
-        if (diffb[1] >= 0 && diffb[1] < minDiff) {
-            minDiff = diffb[1];
-            minDirection = [0, -minDiff, 0];
-        }
-        if (diffb[2] >= 0 && diffb[2] < minDiff) {
-            minDiff = diffb[2];
-            minDirection = [0, 0, -minDiff];
-        }
 
-        const transform = a.getComponentOfType(Transform);
-        if (!transform) {
-            return;
-        }
+            // check if name is invalid
+            if (b.name && !dontRender.includes(b.name)) {
+                dontRender.push(b.name);
+                sessionStorage.setItem('dontRender', JSON.stringify(dontRender));
+                incrementCoinCount();
 
-        vec3.add(transform.translation, transform.translation, minDirection);
+            }
+
+            //Move node A minimally to avoid collision.
+            const diffa = vec3.sub(vec3.create(), bBox.max, aBox.min);
+            const diffb = vec3.sub(vec3.create(), aBox.max, bBox.min);
+
+            let minDiff = Infinity;
+            let minDirection = [0, 0, 0];
+            if (diffa[0] >= 0 && diffa[0] < minDiff) {
+                minDiff = diffa[0];
+                minDirection = [minDiff, 0, 0];
+            }
+            if (diffa[1] >= 0 && diffa[1] < minDiff) {
+                minDiff = diffa[1];
+                minDirection = [0, minDiff, 0];
+            }
+            if (diffa[2] >= 0 && diffa[2] < minDiff) {
+                minDiff = diffa[2];
+                minDirection = [0, 0, minDiff];
+            }
+            if (diffb[0] >= 0 && diffb[0] < minDiff) {
+                minDiff = diffb[0];
+                minDirection = [-minDiff, 0, 0];
+            }
+            if (diffb[1] >= 0 && diffb[1] < minDiff) {
+                minDiff = diffb[1];
+                minDirection = [0, -minDiff, 0];
+            }
+            if (diffb[2] >= 0 && diffb[2] < minDiff) {
+                minDiff = diffb[2];
+                minDirection = [0, 0, -minDiff];
+            }
+
+            const transform = a.getComponentOfType(Transform);
+            if (!transform) {
+                return;
+            }
+
+            vec3.add(transform.translation, transform.translation, minDirection);
+        }
     }
-
 }

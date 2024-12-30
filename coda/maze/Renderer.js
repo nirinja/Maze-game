@@ -1,8 +1,8 @@
-import { vec3, mat4 } from 'glm';
+import {vec3, mat4} from 'glm';
 
 import * as WebGPU from 'engine/WebGPU.js';
 
-import { Camera } from 'engine/core.js';
+import {Camera} from 'engine/core.js';
 
 import {
     getLocalModelMatrix,
@@ -12,9 +12,9 @@ import {
     getModels,
 } from 'engine/core/SceneUtils.js';
 
-import { BaseRenderer } from 'engine/renderers/BaseRenderer.js';
+import {BaseRenderer} from 'engine/renderers/BaseRenderer.js';
 
-import { Light } from './Light.js';
+import {Light} from './Light.js';
 
 const vertexBufferLayout = {
     arrayStride: 32,
@@ -44,6 +44,7 @@ export class Renderer extends BaseRenderer {
 
     constructor(canvas) {
         super(canvas);
+        this.dontRender = new Set(); // all the nodes that musn't render
     }
 
     async initialize() {
@@ -51,17 +52,17 @@ export class Renderer extends BaseRenderer {
 
         const code = await fetch(new URL('shader.wgsl', import.meta.url))
             .then(response => response.text());
-        const module = this.device.createShaderModule({ code });
+        const module = this.device.createShaderModule({code});
 
         this.pipeline = await this.device.createRenderPipelineAsync({
             layout: 'auto',
             vertex: {
                 module,
-                buffers: [ vertexBufferLayout ],
+                buffers: [vertexBufferLayout],
             },
             fragment: {
                 module,
-                targets: [{ format: this.format }],
+                targets: [{format: this.format}],
             },
             depthStencil: {
                 format: 'depth24plus',
@@ -95,11 +96,11 @@ export class Renderer extends BaseRenderer {
         const modelBindGroup = this.device.createBindGroup({
             layout: this.pipeline.getBindGroupLayout(1),
             entries: [
-                { binding: 0, resource: { buffer: modelUniformBuffer } },
+                {binding: 0, resource: {buffer: modelUniformBuffer}},
             ],
         });
 
-        const gpuObjects = { modelUniformBuffer, modelBindGroup };
+        const gpuObjects = {modelUniformBuffer, modelBindGroup};
         this.gpuObjects.set(node, gpuObjects);
         return gpuObjects;
     }
@@ -117,11 +118,11 @@ export class Renderer extends BaseRenderer {
         const cameraBindGroup = this.device.createBindGroup({
             layout: this.pipeline.getBindGroupLayout(0),
             entries: [
-                { binding: 0, resource: { buffer: cameraUniformBuffer } },
+                {binding: 0, resource: {buffer: cameraUniformBuffer}},
             ],
         });
 
-        const gpuObjects = { cameraUniformBuffer, cameraBindGroup };
+        const gpuObjects = {cameraUniformBuffer, cameraBindGroup};
         this.gpuObjects.set(camera, gpuObjects);
         return gpuObjects;
     }
@@ -139,11 +140,11 @@ export class Renderer extends BaseRenderer {
         const lightBindGroup = this.device.createBindGroup({
             layout: this.pipeline.getBindGroupLayout(3),
             entries: [
-                { binding: 0, resource: { buffer: lightUniformBuffer } },
+                {binding: 0, resource: {buffer: lightUniformBuffer}},
             ],
         });
 
-        const gpuObjects = { lightUniformBuffer, lightBindGroup };
+        const gpuObjects = {lightUniformBuffer, lightBindGroup};
         this.gpuObjects.set(light, gpuObjects);
         return gpuObjects;
     }
@@ -164,13 +165,13 @@ export class Renderer extends BaseRenderer {
         const materialBindGroup = this.device.createBindGroup({
             layout: this.pipeline.getBindGroupLayout(2),
             entries: [
-                { binding: 0, resource: { buffer: materialUniformBuffer } },
-                { binding: 1, resource: baseTexture.createView() },
-                { binding: 2, resource: baseSampler },
+                {binding: 0, resource: {buffer: materialUniformBuffer}},
+                {binding: 1, resource: baseTexture.createView()},
+                {binding: 2, resource: baseSampler},
             ],
         });
 
-        const gpuObjects = { materialUniformBuffer, materialBindGroup };
+        const gpuObjects = {materialUniformBuffer, materialBindGroup};
         this.gpuObjects.set(material, gpuObjects);
         return gpuObjects;
     }
@@ -202,7 +203,7 @@ export class Renderer extends BaseRenderer {
         const cameraComponent = camera.getComponentOfType(Camera);
         const viewMatrix = getGlobalViewMatrix(camera);
         const projectionMatrix = getProjectionMatrix(camera);
-        const { cameraUniformBuffer, cameraBindGroup } = this.prepareCamera(cameraComponent);
+        const {cameraUniformBuffer, cameraBindGroup} = this.prepareCamera(cameraComponent);
         this.device.queue.writeBuffer(cameraUniformBuffer, 0, viewMatrix);
         this.device.queue.writeBuffer(cameraUniformBuffer, 64, projectionMatrix);
         this.renderPass.setBindGroup(0, cameraBindGroup);
@@ -211,7 +212,7 @@ export class Renderer extends BaseRenderer {
         const lightComponent = light.getComponentOfType(Light);
         const lightMatrix = getGlobalModelMatrix(light);
         const lightPosition = mat4.getTranslation(vec3.create(), lightMatrix);
-        const { lightUniformBuffer, lightBindGroup } = this.prepareLight(lightComponent);
+        const {lightUniformBuffer, lightBindGroup} = this.prepareLight(lightComponent);
         this.device.queue.writeBuffer(lightUniformBuffer, 0, lightPosition);
         this.device.queue.writeBuffer(lightUniformBuffer, 12,
             new Float32Array([lightComponent.ambient]));
@@ -224,21 +225,25 @@ export class Renderer extends BaseRenderer {
     }
 
     renderNode(node, modelMatrix = mat4.create()) {
-        const localMatrix = getLocalModelMatrix(node);
-        modelMatrix = mat4.multiply(mat4.create(), modelMatrix, localMatrix);
+        // read dontRender
+        const dontRender = JSON.parse(sessionStorage.getItem('dontRender') || '[]')
+        if (!dontRender.includes(node.name)) {
+            const localMatrix = getLocalModelMatrix(node);
+            modelMatrix = mat4.multiply(mat4.create(), modelMatrix, localMatrix);
 
-        const { modelUniformBuffer, modelBindGroup } = this.prepareNode(node);
-        const normalMatrix = mat4.normalFromMat4(mat4.create(), modelMatrix);
-        this.device.queue.writeBuffer(modelUniformBuffer, 0, modelMatrix);
-        this.device.queue.writeBuffer(modelUniformBuffer, 64, normalMatrix);
-        this.renderPass.setBindGroup(1, modelBindGroup);
+            const {modelUniformBuffer, modelBindGroup} = this.prepareNode(node);
+            const normalMatrix = mat4.normalFromMat4(mat4.create(), modelMatrix);
+            this.device.queue.writeBuffer(modelUniformBuffer, 0, modelMatrix);
+            this.device.queue.writeBuffer(modelUniformBuffer, 64, normalMatrix);
+            this.renderPass.setBindGroup(1, modelBindGroup);
 
-        for (const model of getModels(node)) {
-            this.renderModel(model);
-        }
+            for (const model of getModels(node)) {
+                this.renderModel(model);
+            }
 
-        for (const child of node.children) {
-            this.renderNode(child, modelMatrix);
+            for (const child of node.children) {
+                this.renderNode(child, modelMatrix);
+            }
         }
     }
 
@@ -249,11 +254,11 @@ export class Renderer extends BaseRenderer {
     }
 
     renderPrimitive(primitive) {
-        const { materialUniformBuffer, materialBindGroup } = this.prepareMaterial(primitive.material);
+        const {materialUniformBuffer, materialBindGroup} = this.prepareMaterial(primitive.material);
         this.device.queue.writeBuffer(materialUniformBuffer, 0, new Float32Array(primitive.material.baseFactor));
         this.renderPass.setBindGroup(2, materialBindGroup);
 
-        const { vertexBuffer, indexBuffer } = this.prepareMesh(primitive.mesh, vertexBufferLayout);
+        const {vertexBuffer, indexBuffer} = this.prepareMesh(primitive.mesh, vertexBufferLayout);
         this.renderPass.setVertexBuffer(0, vertexBuffer);
         this.renderPass.setIndexBuffer(indexBuffer, 'uint32');
 

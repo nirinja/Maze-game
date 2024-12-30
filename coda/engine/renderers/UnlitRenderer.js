@@ -31,9 +31,9 @@ const vertexBufferLayout = {
 };
 
 export class UnlitRenderer extends BaseRenderer {
-
     constructor(canvas) {
         super(canvas);
+        this.dontRender = new Set(); // all the nodes that musn't render
     }
 
     async initialize() {
@@ -194,21 +194,26 @@ export class UnlitRenderer extends BaseRenderer {
     }
 
     renderNode(node, modelMatrix = mat4.create()) {
-        const localMatrix = getLocalModelMatrix(node);
-        modelMatrix = mat4.multiply(mat4.create(), modelMatrix, localMatrix);
-        const normalMatrix = mat4.normalFromMat4(mat4.create(), modelMatrix);
+        // read dontRender
+        const dontRender = JSON.parse(sessionStorage.getItem('dontRender') || '[]')
 
-        const { modelUniformBuffer, modelBindGroup } = this.prepareNode(node);
-        this.device.queue.writeBuffer(modelUniformBuffer, 0, modelMatrix);
-        this.device.queue.writeBuffer(modelUniformBuffer, 64, normalMatrix);
-        this.renderPass.setBindGroup(1, modelBindGroup);
+        if (!dontRender.includes(node.name)) {
+            const localMatrix = getLocalModelMatrix(node);
+            modelMatrix = mat4.multiply(mat4.create(), modelMatrix, localMatrix);
+            const normalMatrix = mat4.normalFromMat4(mat4.create(), modelMatrix);
 
-        for (const model of node.getComponentsOfType(Model)) {
-            this.renderModel(model);
-        }
+            const { modelUniformBuffer, modelBindGroup } = this.prepareNode(node);
+            this.device.queue.writeBuffer(modelUniformBuffer, 0, modelMatrix);
+            this.device.queue.writeBuffer(modelUniformBuffer, 64, normalMatrix);
+            this.renderPass.setBindGroup(1, modelBindGroup);
 
-        for (const child of node.children) {
-            this.renderNode(child, modelMatrix);
+            for (const model of node.getComponentsOfType(Model)) {
+                this.renderModel(model);
+            }
+
+            for (const child of node.children) {
+                this.renderNode(child, modelMatrix);
+            }
         }
     }
 

@@ -10,6 +10,28 @@ import {Physics} from './Physics.js';
 import { Renderer } from './Renderer.js';
 import { Light } from './Light.js';
 
+// main.js
+export let coinCount = 0;
+const coinAudio = new Audio('scene/coin-recieved.mp3');
+
+// A helper function to update the DOM display
+export function updateCoinCountDisplay() {
+    const coinCountSpan = document.getElementById('coinCount');
+    if (coinCountSpan) {
+        coinCountSpan.textContent = coinCount;
+    }
+}
+
+// (Optional) a function to increment coin count
+export function incrementCoinCount() {
+    coinCount++;
+    coinAudio.play()
+    updateCoinCountDisplay();
+    if (coinCount === 10) {
+        window.location.href = "index2.html";
+    }
+}
+
 
 const canvas = document.querySelector('canvas');
 const renderer = new Renderer(canvas);
@@ -47,11 +69,43 @@ for (let i = 1; i <= 58; i++) {
     const curve = 'Curve.' + String(i).padStart(3, '0');
     loader.loadNode(curve).isStatic = true;
 }
-//coins
-for (let i = 1; i <= 20; i++) {
+//coin shadows
+for (let i = 11; i <= 20; i++) {
     const curve = 'Cylinder.' + String(i).padStart(3, '0');
     loader.loadNode(curve).isStatic = true;
 }
+
+//coins
+const coin1 = loader.loadNode('Cylinder.001');
+coin1.isStatic = true;
+coin1.name = 'Cylinder.001';
+const coin2 = loader.loadNode('Cylinder.002');
+coin2.isStatic = true;
+coin2.name = 'Cylinder.002';
+const coin3 = loader.loadNode('Cylinder.003');
+coin3.isStatic = true;
+coin3.name = 'Cylinder.003';
+const coin4 = loader.loadNode('Cylinder.004');
+coin4.isStatic = true;
+coin4.name = 'Cylinder.004';
+const coin5 = loader.loadNode('Cylinder.005');
+coin5.isStatic = true;
+coin5.name = 'Cylinder.005';
+const coin6 = loader.loadNode('Cylinder.006');
+coin6.isStatic = true;
+coin6.name = 'Cylinder.006';
+const coin7 = loader.loadNode('Cylinder.007');
+coin7.isStatic = true;
+coin7.name = 'Cylinder.007';
+const coin8 = loader.loadNode('Cylinder.008');
+coin8.isStatic = true;
+coin8.name = 'Cylinder.008';
+const coin9 = loader.loadNode('Cylinder.009');
+coin9.isStatic = true;
+coin9.name = 'Cylinder.009';
+const coin10 = loader.loadNode('Cylinder.010');
+coin10.isStatic = true;
+coin10.name = 'Cylinder.010';
 
 const physics = new Physics(scene);
 
