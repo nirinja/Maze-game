@@ -28,7 +28,7 @@ export function incrementCoinCount() {
     coinAudio.play()
     updateCoinCountDisplay();
     if (coinCount === 10) {
-        window.location.href = "index2.html";
+        window.location.href = "end.html";
     }
 }
 

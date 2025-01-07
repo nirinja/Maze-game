@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9670784e-1c69-4a68-8025-3c8f5c959a23" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/coda/engine/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/coda/engine/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coda/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coda/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coda/maze/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coda/maze/game.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coda/maze/index2.html" beforeDir="false" afterPath="$PROJECT_DIR$/coda/maze/end.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coda/maze/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/coda/maze/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coda/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/coda/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coda/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/coda/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coda/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/coda/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coda/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/coda/server.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2rIvGS2n6CHG2aZYdsFkJsMTUOi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.end.html.executor": "Run",
+    "JavaScript Debug.index.html.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration name="end.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Maze-game/coda/maze/end.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Maze-game/coda/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.end.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23726.96" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9670784e-1c69-4a68-8025-3c8f5c959a23" name="Changes" comment="" />
+      <created>1736259313055</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1736259313055</updated>
+      <workItem from="1736259315241" duration="4784000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

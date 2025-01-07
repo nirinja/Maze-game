@@ -52,7 +52,6 @@ body, html {
 }
 
 .centered {
-    padding-top: 300px;
     display: flex;
     justify-content: center; /* Centers horizontally */
     /* align-items: center;  Centers vertically */
@@ -64,11 +63,49 @@ body, html {
 a {
     color: black;
     text-decoration: none;
+    color: #FFF;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #000;
+    font-family: "American Typewriter", serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 100px;
+    font-style: normal;
+    text-align: center;
+    margin-left: 750px;
 }
 
 a:hover {
     background: #ddd;
     text-decoration: none;
+}
+
+h1 {
+    margin-left: 400px;
+    color: #FFF;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #000;
+    font-family: "American Typewriter", serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 100px;
+    font-style: normal;
+    text-align: center;
+}
+
+p{
+    margin-left: 350px;
+    color: #FFF;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #FFF;
+    font-family: serif;
+    font-size: 30px;
+    font-style: normal;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 

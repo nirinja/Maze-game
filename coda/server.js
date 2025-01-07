@@ -28,7 +28,7 @@ const server = http.createServer(async (req, res) => {
     const rootPath = __dirname;
     let filePath = path.join(rootPath, requestPath);
     if (filePath.endsWith(path.sep)) {
-        filePath = path.join(filePath, 'index.html');
+        filePath = path.join(filePath, 'game.html');
     }
 
     // get an appropriate Content-Type
