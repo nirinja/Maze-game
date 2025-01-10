@@ -63,7 +63,8 @@ light.addComponent(new Light({
 scene.addChild(light);
 
 //floor
-loader.loadNode('Cube').isStatic = true;
+loader.loadNode('Floor').isStatic = true;
+loader.loadNode('Sky').isStatic = true;
 //maze
 for (let i = 1; i <= 58; i++) {
     const curve = 'Curve.' + String(i).padStart(3, '0');

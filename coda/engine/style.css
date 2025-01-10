@@ -1,5 +1,4 @@
 /* RESET & GLOBAL */
-
 html, body {
     margin: 0;
     padding: 0;
@@ -11,7 +10,6 @@ html, body {
 }
 
 /* FULLSCREEN & PIXELATED */
-
 .fullscreen {
     width: 100vw;
     height: 100vh;
@@ -32,7 +30,6 @@ html, body {
 }
 
 /* OVERLAY (CENTERED) */
-
 .overlay-center {
     position: fixed;
     left: 50%;
@@ -53,24 +50,22 @@ html, body {
 }
 
 /* CENTERED BODY (IF NEEDED) */
-
 .centered {
-    /* If you only need horizontal centering, remove align-items. */
-    /* If you do want to center the entire body content, you could add:
+    margin: 0;
+    font-size: 50px; /* Not strictly necessary unless you want a big base font. */
+    /*
+       If you want to center everything horizontally and vertically:
        display: flex;
        justify-content: center;
        align-items: center;
        height: 100vh;
     */
-    margin: 0;
-    font-size: 50px; /* Not strictly necessary unless you want a big base font. */
 }
 
 /* HEADERS & PARAGRAPHS */
-
 h1 {
-    margin: 0; /* remove the old margin-left */
-    color: #FFF;
+    margin: 0;
+    color: #000;
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: #000;
     font-family: "American Typewriter", serif;
@@ -80,17 +75,17 @@ h1 {
 }
 
 p {
-    margin: 0; /* remove the old margin-left */
-    color: #FFF;
+    margin: 0;
+    color: #000;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #FFF;
+    -webkit-text-stroke-color: #000;
     font-family: serif;
     font-size: 30px;
     text-align: center;
+    padding: 50px;
 }
 
 /* LINK STYLES */
-
 a {
     color: black;
     text-decoration: none;
@@ -102,21 +97,19 @@ a:hover {
 }
 
 /* “NASLOVA” CLASS (BIG TITLE LINK) */
-
 .naslovA {
-    color: #FFF;
+    color: #000;
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: #000;
     font-family: "American Typewriter", serif;
     font-weight: 800;
     font-size: 100px;
     text-align: center;
-    margin: 0; /* remove the old margin-left */
+    margin: 0;
     display: inline-block; /* so hover effect is more contained */
 }
 
 /* LOADER (IF NEEDED) */
-
 .loader-container {
     display: flex;
     align-items: center;
@@ -139,7 +132,6 @@ a:hover {
 }
 
 /* RESPONSIVE IMAGES */
-
 img {
     max-width: 100%;
     height: auto;
