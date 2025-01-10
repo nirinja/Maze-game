@@ -29,40 +29,30 @@ html, body {
     image-rendering: pixelated;
 }
 
-/* OVERLAY (CENTERED) */
 .overlay-center {
     position: fixed;
     left: 50%;
     top: 40%;
     transform: translate(-50%, -50%);
-    text-align: center;   /* Center text horizontally */
+    text-align: center;
     font-size: 30px;
 }
 
 .overlay-left {
     position: fixed;
-    top: 10px;     /* or 0 if you want it flush against the top */
-    left: 10px;    /* or 0 for flush against the left edge */
+    top: 20px;     /* or 0 if you want it flush against the top */
+    left: 20px;    /* or 0 for flush against the left edge */
     margin: 0;     /* reset default list margin if needed */
     padding: 10px; /* optional: give some breathing room */
-    font-size: 20px; /* adjust as necessary */
+    font-size: 30px; /* adjust as necessary */
     color: #000;   /* text color to contrast with background */
 }
 
-/* CENTERED BODY (IF NEEDED) */
 .centered {
     margin: 0;
-    font-size: 50px; /* Not strictly necessary unless you want a big base font. */
-    /*
-       If you want to center everything horizontally and vertically:
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       height: 100vh;
-    */
+    font-size: 50px;
 }
 
-/* HEADERS & PARAGRAPHS */
 h1 {
     margin: 0;
     color: #000;
@@ -96,7 +86,6 @@ a:hover {
     text-decoration: none;
 }
 
-/* “NASLOVA” CLASS (BIG TITLE LINK) */
 .naslovA {
     color: #000;
     -webkit-text-stroke-width: 3px;
@@ -106,10 +95,9 @@ a:hover {
     font-size: 100px;
     text-align: center;
     margin: 0;
-    display: inline-block; /* so hover effect is more contained */
+    display: inline-block;
 }
 
-/* LOADER (IF NEEDED) */
 .loader-container {
     display: flex;
     align-items: center;
@@ -131,8 +119,16 @@ a:hover {
     100% { transform: rotate(1800deg); }
 }
 
-/* RESPONSIVE IMAGES */
 img {
     max-width: 100%;
     height: auto;
+}
+
+#restartBtn {
+    background-color: transparent;
+    color: #000;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    cursor: pointer;
 }

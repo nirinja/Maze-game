@@ -1,14 +1,13 @@
 import {ResizeSystem} from 'engine/systems/ResizeSystem.js';
 import {UpdateSystem} from 'engine/systems/UpdateSystem.js';
 import {GLTFLoader} from 'engine/loaders/GLTFLoader.js';
-import {UnlitRenderer} from 'engine/renderers/UnlitRenderer.js';
 import {FirstPersonController} from 'engine/controllers/FirstPersonController.js';
 import {Camera, Model, Node, Transform,} from 'engine/core.js';
 import {calculateAxisAlignedBoundingBox, mergeAxisAlignedBoundingBoxes,} from 'engine/core/MeshUtils.js';
 import {Physics} from './Physics.js';
 
-import { Renderer } from './Renderer.js';
-import { Light } from './Light.js';
+import {Renderer} from './Renderer.js';
+import {Light} from './Light.js';
 
 // main.js
 export let coinCount = 0;
@@ -28,6 +27,8 @@ export function incrementCoinCount() {
     coinAudio.play()
     updateCoinCountDisplay();
     if (coinCount === 10) {
+        sessionStorage.setItem('dontRender', JSON.stringify([]));
+        location.reload();
         window.location.href = "end.html";
     }
 }
@@ -65,6 +66,7 @@ scene.addChild(light);
 //floor
 loader.loadNode('Floor').isStatic = true;
 loader.loadNode('Sky').isStatic = true;
+
 //maze
 for (let i = 1; i <= 58; i++) {
     const curve = 'Curve.' + String(i).padStart(3, '0');

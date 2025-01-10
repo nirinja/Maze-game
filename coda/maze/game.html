@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <title>Maze</title>
     <script type="importmap">
-    {
-        "imports": {
-            "engine/": "../engine/",
-            "dat": "../lib/dat.js",
-            "glm": "../lib/glm.js"
+        {
+            "imports": {
+                "engine/": "../engine/",
+                "dat": "../lib/dat.js",
+                "glm": "../lib/glm.js"
+            }
         }
-    }
     </script>
     <script type="module" src="main.js"></script>
     <link rel="stylesheet" href="../engine/style.css">
@@ -19,13 +19,23 @@
 <ul class="overlay-left">
     Coins: <span id="coinCount">0</span> / 10
     <br>
-    <a href="game.html">RESTART</a>
+    <button id="restartBtn">RESTART</button>
 </ul>
 
+<div class="fullscreen no-touch pixelated">
+    <canvas></canvas>
+</div>
 
-    <div class="fullscreen no-touch pixelated">
-        <canvas></canvas>
-    </div>
-
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const restartBtn = document.getElementById('restartBtn');
+        if (restartBtn) {
+            restartBtn.addEventListener('click', () => {
+                sessionStorage.removeItem('dontRender');
+                location.reload();
+            });
+        }
+    });
+</script>
 </body>
 </html>
