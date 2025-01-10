@@ -33,6 +33,20 @@ export function incrementCoinCount() {
     }
 }
 
+// main.js
+
+// Poskrbi, da se koda požene šele, ko je DOM pripravljen
+document.addEventListener('DOMContentLoaded', () => {
+    const restartBtn = document.getElementById('restartBtn');
+    if (restartBtn) {
+        restartBtn.addEventListener('click', () => {
+            sessionStorage.setItem('dontRender', JSON.stringify([]));
+            location.reload();
+        });
+    }
+});
+
+
 
 const canvas = document.querySelector('canvas');
 const renderer = new Renderer(canvas);

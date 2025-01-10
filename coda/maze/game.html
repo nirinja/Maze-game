@@ -25,17 +25,5 @@
 <div class="fullscreen no-touch pixelated">
     <canvas></canvas>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const restartBtn = document.getElementById('restartBtn');
-        if (restartBtn) {
-            restartBtn.addEventListener('click', () => {
-                sessionStorage.removeItem('dontRender');
-                location.reload();
-            });
-        }
-    });
-</script>
 </body>
 </html>
