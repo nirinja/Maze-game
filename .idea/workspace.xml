@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9670784e-1c69-4a68-8025-3c8f5c959a23" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coda/maze/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/coda/maze/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coda/maze/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/coda/maze/main.js" afterDir="false" />
-    </list>
+    <list default="true" id="9670784e-1c69-4a68-8025-3c8f5c959a23" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,7 +25,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JavaScript Debug.end.html.executor": "Run",
-    "JavaScript Debug.index.html.executor": "Debug",
+    "JavaScript Debug.index.html.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
@@ -72,7 +68,7 @@
       <workItem from="1736259315241" duration="5042000" />
       <workItem from="1736509451804" duration="35000" />
       <workItem from="1736510385326" duration="1987000" />
-      <workItem from="1736512494988" duration="10856000" />
+      <workItem from="1736512494988" duration="11243000" />
     </task>
     <servers />
   </component>
