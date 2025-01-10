@@ -1,11 +1,16 @@
-body, html {
+/* RESET & GLOBAL */
+
+html, body {
     margin: 0;
     padding: 0;
 }
 
 * {
     font-family: sans-serif;
+    box-sizing: border-box;
 }
+
+/* FULLSCREEN & PIXELATED */
 
 .fullscreen {
     width: 100vw;
@@ -18,13 +23,6 @@ body, html {
     height: 100%;
 }
 
-.overlay {
-    position: fixed;
-    left: 0;
-    top: 0;
-    font-size: 30px;
-}
-
 .no-touch {
     touch-action: none;
 }
@@ -32,6 +30,92 @@ body, html {
 .pixelated {
     image-rendering: pixelated;
 }
+
+/* OVERLAY (CENTERED) */
+
+.overlay-center {
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    text-align: center;   /* Center text horizontally */
+    font-size: 30px;
+}
+
+.overlay-left {
+    position: fixed;
+    top: 10px;     /* or 0 if you want it flush against the top */
+    left: 10px;    /* or 0 for flush against the left edge */
+    margin: 0;     /* reset default list margin if needed */
+    padding: 10px; /* optional: give some breathing room */
+    font-size: 20px; /* adjust as necessary */
+    color: #000;   /* text color to contrast with background */
+}
+
+/* CENTERED BODY (IF NEEDED) */
+
+.centered {
+    /* If you only need horizontal centering, remove align-items. */
+    /* If you do want to center the entire body content, you could add:
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100vh;
+    */
+    margin: 0;
+    font-size: 50px; /* Not strictly necessary unless you want a big base font. */
+}
+
+/* HEADERS & PARAGRAPHS */
+
+h1 {
+    margin: 0; /* remove the old margin-left */
+    color: #FFF;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #000;
+    font-family: "American Typewriter", serif;
+    font-weight: 800;
+    font-size: 100px;
+    text-align: center;
+}
+
+p {
+    margin: 0; /* remove the old margin-left */
+    color: #FFF;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #FFF;
+    font-family: serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+/* LINK STYLES */
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    background: #ddd;
+    text-decoration: none;
+}
+
+/* “NASLOVA” CLASS (BIG TITLE LINK) */
+
+.naslovA {
+    color: #FFF;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #000;
+    font-family: "American Typewriter", serif;
+    font-weight: 800;
+    font-size: 100px;
+    text-align: center;
+    margin: 0; /* remove the old margin-left */
+    display: inline-block; /* so hover effect is more contained */
+}
+
+/* LOADER (IF NEEDED) */
 
 .loader-container {
     display: flex;
@@ -42,74 +126,21 @@ body, html {
 .loader {
     width: 100px;
     height: 100px;
-
     border: 15px solid transparent;
     border-radius: 50%;
     border-top-color: #999;
     border-bottom-color: #999;
-
     animation: spin 2s ease-in-out infinite;
 }
 
-.centered {
-    display: flex;
-    justify-content: center; /* Centers horizontally */
-    /* align-items: center;  Centers vertically */
-    height: 100vh;          /* Full viewport height */
-    margin: 0;
-    font-size: 50px;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(1800deg); }
 }
 
-a {
-    color: black;
-    text-decoration: none;
-    color: #FFF;
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: #000;
-    font-family: "American Typewriter", serif;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 100px;
-    font-style: normal;
-    text-align: center;
-    margin-left: 750px;
-}
-
-a:hover {
-    background: #ddd;
-    text-decoration: none;
-}
-
-h1 {
-    margin-left: 400px;
-    color: #FFF;
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: #000;
-    font-family: "American Typewriter", serif;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 100px;
-    font-style: normal;
-    text-align: center;
-}
-
-p{
-    margin-left: 350px;
-    color: #FFF;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #FFF;
-    font-family: serif;
-    font-size: 30px;
-    font-style: normal;
-}
+/* RESPONSIVE IMAGES */
 
 img {
     max-width: 100%;
     height: auto;
-}
-
-
-@keyframes spin {
-      0% { transform: rotate(0deg); }
-    100% { transform: rotate(1800deg); }
 }

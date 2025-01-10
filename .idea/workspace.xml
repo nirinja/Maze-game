@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9670784e-1c69-4a68-8025-3c8f5c959a23" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blander/Kvadraten.blend" beforeDir="false" afterPath="$PROJECT_DIR$/blander/Kvadraten.blend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blander/Kvadraten.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/blander/Kvadraten.blend1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coda/engine/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/coda/engine/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coda/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coda/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coda/maze/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coda/maze/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coda/maze/index2.html" beforeDir="false" afterPath="$PROJECT_DIR$/coda/maze/end.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coda/maze/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/coda/maze/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coda/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/coda/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coda/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/coda/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coda/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/coda/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coda/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/coda/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coda/maze/end.html" beforeDir="false" afterPath="$PROJECT_DIR$/coda/maze/end.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coda/maze/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/coda/maze/game.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coda/maze/scene/Kvadraten.gltf" beforeDir="false" afterPath="$PROJECT_DIR$/coda/maze/scene/Kvadraten.gltf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,30 +22,30 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2rIvGS2n6CHG2aZYdsFkJsMTUOi" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.end.html.executor": "Run",
-    "JavaScript Debug.index.html.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.end.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JavaScript Debug.index.html">
+}</component>
+  <component name="RunManager" selected="JavaScript Debug.end.html">
     <configuration name="end.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Maze-game/coda/maze/end.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -56,8 +54,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.end.html" />
+        <item itemvalue="JavaScript Debug.index.html" />
       </list>
     </recent_temporary>
   </component>
@@ -76,7 +74,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1736259313055</updated>
-      <workItem from="1736259315241" duration="4784000" />
+      <workItem from="1736259315241" duration="5042000" />
+      <workItem from="1736509451804" duration="35000" />
+      <workItem from="1736510385326" duration="1987000" />
     </task>
     <servers />
   </component>
