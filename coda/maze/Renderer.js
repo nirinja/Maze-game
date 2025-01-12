@@ -50,7 +50,7 @@ export class Renderer extends BaseRenderer {
     async initialize() {
         await super.initialize();
 
-        const code = await fetch(new URL('shader.wgsl', import.meta.url))
+        const code = await fetch(new URL('Shader.wgsl', import.meta.url))
             .then(response => response.text());
         const module = this.device.createShaderModule({code});
 
