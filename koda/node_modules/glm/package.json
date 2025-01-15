@@ -1,0 +1,21 @@
+{
+  "name": "glm",
+  "version": "1.0.0",
+  "description": "Generalized Linear Models",
+  "keywords": [
+    "glm",
+    "statistics",
+    "model",
+    "machine-learning"
+  ],
+  "homepage": "https://github.com/rallysf/glm",
+  "main": "./glm.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rallysf/glm.js.git"
+  },
+  "devDependencies": {
+    "vows": "0.6.1",
+    "uglify-js": "1.2.5"
+  }
+}
